@@ -13,6 +13,13 @@ definePageMeta({
 })
 
 const car = computed(() => cars.find((car) => parseInt(car.id) === parseInt(route.params.id)))
+
+if (!car.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: `Car with ID ${route.params.id} doesn't exist`,
+  })
+}
 </script>
 
 <template>
