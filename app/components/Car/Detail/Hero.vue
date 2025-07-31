@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <div class="mt-10">
-    <img :src="car.url" :alt="car.name" class="w-full object-cover" >
+    <NuxtPicture :src="car.url" class="w-full object-cover" />
 
     <h1 class="mt-10 text-4xl">{{ car.name }}</h1>
     <div class="text-slate-500 flex justify-between text-lg mt-3 border-b pb-5">
