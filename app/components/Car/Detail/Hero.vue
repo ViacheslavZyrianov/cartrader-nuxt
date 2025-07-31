@@ -1,20 +1,25 @@
 <script setup lang="ts">
-
+defineProps({
+  car: {
+    type: Object,
+    default: () => ({})
+  }
+})
 </script>
 
 <template>
   <div class="mt-10">
-    <img src="https://eliteclubmia.com/cdn/shop/products/ScreenShot2021-09-14at4.12.21PM.png?v=1631650809" alt="" class="w-full object-cover" >
+    <img :src="car.url" :alt="car.name" class="w-full object-cover" >
 
-    <h1 class="mt-10 text-4xl">Lamborghini Urus Red</h1>
+    <h1 class="mt-10 text-4xl">{{ car.name }}</h1>
     <div class="text-slate-500 flex justify-between text-lg mt-3 border-b pb-5">
       <div class="flex items-center">
-        <p class="mr-2">4 seats</p>
+        <p class="mr-2">{{ car.seats }} seats</p>
         <p class="mr-2">|</p>
-        <p class="mr-2">5.000 km</p>
+        <p class="mr-2">{{ car.mileage }} km</p>
       </div>
       <div>
-        <p class="font-bold">$395.000</p>
+        <p class="font-bold">${{ car.price }}</p>
       </div>
     </div>
   </div>

@@ -2,6 +2,7 @@
 
 const route = useRoute()
 const { capitalize } = useUtilities()
+const { cars } = useCars()
 
 useHead({
   title: capitalize(route.params.name)
@@ -10,13 +11,15 @@ useHead({
 definePageMeta({
   layout: 'custom',
 })
+
+const car = computed(() => cars.find((car) => parseInt(car.id) === parseInt(route.params.id)))
 </script>
 
 <template>
-  <div>
-    <CarDetailHero />
-    <CarDetailAttributes />
-    <CarDetailDescription />
+  <div v-if="car">
+    <CarDetailHero :car="car" />
+    <CarDetailAttributes :attributes="car.attributes" />
+    <CarDetailDescription :description="car.description" />
     <CarDetailContacts />
   </div>
 </template>
