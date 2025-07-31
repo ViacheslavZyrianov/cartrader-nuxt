@@ -1,7 +1,7 @@
 <script setup lang="ts">
-const route = useRoute()
 
-const capitalize = (str: string): string => str.charAt(0).toUpperCase() + str.slice(1)
+const route = useRoute()
+const { capitalize } = useUtilities()
 
 useHead({
   title: capitalize(route.params.name)
