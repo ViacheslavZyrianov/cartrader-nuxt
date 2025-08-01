@@ -16,7 +16,7 @@ defineProps({
       <div class="flex items-center">
         <p class="mr-2">{{ car.seats }} seats</p>
         <p class="mr-2">|</p>
-        <p class="mr-2">{{ car.mileage }} km</p>
+        <p class="mr-2">{{ car.miles }} miles</p>
       </div>
       <div>
         <p class="font-bold">${{ car.price }}</p>
