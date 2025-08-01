@@ -1,5 +1,10 @@
 <script setup lang="ts">
-const { cars } = useCars()
+defineProps({
+  cars: {
+    type: Array,
+    default: () => []
+  }
+})
 
 const favorite = useLocalStorage('favorite', {})
 
