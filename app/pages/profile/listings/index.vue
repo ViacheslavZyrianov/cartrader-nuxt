@@ -2,7 +2,6 @@
 definePageMeta({
   layout: "custom",
 });
-
 const { listings } = useCars();
 </script>
 
