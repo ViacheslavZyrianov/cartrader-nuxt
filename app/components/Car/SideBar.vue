@@ -66,9 +66,9 @@ const onSubmitPriceRange = () => {
 </script>
 
 <template>
-  <div class="shadow border w-64 mr-10 z-30 h-[190px]">
+  <div class="shadow border mr-10 z-30 w-[240px] h-[190px] shrink-0">
     <div class="p-5 flex justify-between relative cursor-pointer border-b" >
-      <h3>Location</h3>
+      <h3 class="mr-4">Location</h3>
       <h3 class="text-blue-400 capitalize" @click="onUpdateModal('location')">
         {{ route.params.city }}
       </h3>
@@ -79,15 +79,15 @@ const onSubmitPriceRange = () => {
     </div>
 
     <div class="p-5 flex justify-between relative cursor-pointer border-b" >
-      <h3>Make</h3>
+      <h3 class="mr-4">Make</h3>
       <h3 class="text-blue-400 capitalize" @click="onUpdateModal('makes')">{{ modalMake }}</h3>
       <div v-if="modal.makes" class="absolute border shadow left-56 p-5 top-1 -m-1 bg-white w-[600px] flex flex-wrap justify-between">
         <h4 v-for="make in makes" :key="make" class="w-1/3" @click="onSubmitMake(make)">{{ make }}</h4>
       </div>
     </div>
 
-    <div class="p-5 flex justify-between relative cursor-pointer border-b" >
-      <h3>Price</h3>
+    <div class="p-5 flex justify-between relative cursor-pointer" >
+      <h3 class="mr-4">Price</h3>
       <h3 class="text-blue-400 capitalize" @click="onUpdateModal('price')">{{ priceRangeText }}</h3>
       <form v-if="modal.price" class="absolute border shadow left-56 p-5 top-1 -m-1 bg-white" @submit.prevent="onSubmitPriceRange">
         <div class="mb-2">
