@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const data = await useFetchCars(route.params.city as string, { ...(route.params.make && { make: route.params.make }), ...route.query })
+const cars = await useFetchCars(route.params.city as string, { ...(route.params.make && { make: route.params.make }), ...route.query })
 
 watch(() => route.query, () => {
   window.location.reload();
@@ -10,7 +10,8 @@ watch(() => route.query, () => {
 
 <template>
   <div>
-    <CarCards :cars="data" />
+    <CarCards v-if="cars && cars?.length" :cars="cars" />
+    <h1 v-else class="text-red-400 font-bold">No cars found</h1>
   </div>
 </template>
 
