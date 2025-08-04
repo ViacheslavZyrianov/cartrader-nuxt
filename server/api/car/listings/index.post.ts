@@ -30,35 +30,7 @@ export default defineEventHandler(async (event) => {
         });
     }
 
-    const {
-        name,
-        description,
-        make,
-        model,
-        year,
-        miles,
-        city,
-        numberOfSeats,
-        features,
-        image,
-        listerId,
-        price
-    } = body
-
     return prisma.car.create({
-        data: {
-            name,
-            description,
-            make,
-            model,
-            year,
-            miles,
-            city,
-            numberOfSeats,
-            features,
-            image,
-            listerId,
-            price
-        }
+        data: body
     });
 })
