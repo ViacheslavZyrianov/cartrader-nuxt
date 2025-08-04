@@ -26,6 +26,7 @@ model Car {
   features      String[]
   city          String
   model         String
+  year          Int
   listerId      String
   messages      Message[]
 }
