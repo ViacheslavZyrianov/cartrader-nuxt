@@ -82,7 +82,7 @@ const onFormSubmit = async () => {
   const body = {
     ...info.value,
     name: `${info.value.make} ${info.value.model}`,
-    city: info.value.city,
+    city: info.value.city.toLowerCase(),
     description: info.value.description,
     features: info.value.features.split(", "),
     numberOfSeats: parseInt(info.value.seats, 10),
