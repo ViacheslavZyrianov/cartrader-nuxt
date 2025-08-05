@@ -1,10 +1,16 @@
 <script setup>
-defineProps({
+const props = defineProps({
   listing: {
     type: Object,
     default: () => ({}),
   },
 });
+
+const emit = defineEmits(['delete']);
+
+const onDelete = async () => {
+  emit('delete', props.listing.id);
+}
 </script>
 
 <template>
@@ -20,9 +26,10 @@ defineProps({
       <NuxtLink
         class="text-blue-400 mr-4"
         :to="`/profile/listings/view/${listing.id}`"
-        >View</NuxtLink
       >
-      <p class="text-red-400 cursor-pointer">Delete</p>
+        View
+      </NuxtLink>
+      <button class="text-red-400 cursor-pointer mb-auto" @click="onDelete">Delete</button>
     </div>
   </div>
 </template>

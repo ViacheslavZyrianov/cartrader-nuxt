@@ -5,7 +5,15 @@ definePageMeta({
 
 const user = useSupabaseUser()
 
-const { data: listings } = await useFetch(`/api/car/listings/user/${user.value.id}`);
+const { data: listings, refresh } = await useFetch(`/api/car/listings/user/${user.value?.id}`);
+
+const onDeleteListing = async (id: string) => {
+  await $fetch(`/api/car/listings/${id}`, {
+    method: 'DELETE',
+  });
+
+  await refresh();
+}
 </script>
 
 <template>
@@ -34,6 +42,7 @@ const { data: listings } = await useFetch(`/api/car/listings/user/${user.value.i
         v-for="listing in listings"
         :key="listing.id"
         :listing="listing"
+        @delete="onDeleteListing"
       />
     </div>
   </div>
