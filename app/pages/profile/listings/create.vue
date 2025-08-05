@@ -114,7 +114,6 @@ const onFormSubmit = async () => {
     <div class="mt-24">
       <h1 class="text-6xl">Create a New Listing</h1>
     </div>
-    <pre>{{info}}</pre>
     <form class="shadow rounded p-3 mt-5 flex flex-wrap justify-between" @submit.prevent="onFormSubmit">
       <CarAdSelect
         title="Make *"
