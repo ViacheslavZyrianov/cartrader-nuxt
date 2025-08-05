@@ -23,7 +23,7 @@ const favoredIcon: ComputedRef<string> = computed(() => props.isFavorite ? heart
     <img :src="favoredIcon" alt="Favourite" class="absolute w-5 right-5 top-2 z-20 cursor-pointer" @click="emit('toggleFavorite', car.id)">
     <NuxtLink :to="`/car/${car.name}-${car.id}`" class="shadow border flex w-full overflow-hidden mb-5 cursor-pointer h-[200px]">
       <img
-          :src="car.url"
+          :src="car.image"
           :alt="car.name"
           class="w-[300px] h-full object-cover">
       <div class="p-4 flex flex-col">
