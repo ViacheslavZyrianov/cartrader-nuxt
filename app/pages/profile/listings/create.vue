@@ -96,6 +96,7 @@ const inputs = [
         @change-input="onChangeInput"
       />
       <CarAdImage @change-input="onChangeInput" />
+      <button type="submit" class="bg-blue-400 text-white rounded py-2 px-8 mr-auto mt-4">Submit</button>
     </div>
   </div>
 </template>
