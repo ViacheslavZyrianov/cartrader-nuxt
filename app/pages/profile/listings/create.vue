@@ -18,6 +18,8 @@ const info = useState("adInfo", () => ({
   image: null,
 }));
 
+const errorMessage: Ref<string> = ref("")
+
 const onChangeInput = (data, name) => {
   info.value[name] = data;
 };
