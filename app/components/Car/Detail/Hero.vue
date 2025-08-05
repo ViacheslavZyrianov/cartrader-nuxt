@@ -14,7 +14,7 @@ defineProps({
     <h1 class="mt-10 text-4xl">{{ car.name }}</h1>
     <div class="text-slate-500 flex justify-between text-lg mt-3 border-b pb-5">
       <div class="flex items-center">
-        <p class="mr-2">{{ car.seats }} seats</p>
+        <p class="mr-2">{{ car.numberOfSeats }} seats</p>
         <p class="mr-2">|</p>
         <p class="mr-2">{{ car.miles }} miles</p>
       </div>
