@@ -5,20 +5,18 @@ definePageMeta({
 
 const { makes } = useCars();
 
-const info = useState("adInfo", () => {
-  return {
-    make: "",
-    model: "",
-    year: "",
-    miles: "",
-    price: "",
-    city: "",
-    seats: "",
-    features: "",
-    description: "",
-    image: null,
-  };
-});
+const info = useState("adInfo", () => ({
+  make: "",
+  model: "",
+  year: "",
+  miles: "",
+  price: "",
+  city: "",
+  seats: "",
+  features: "",
+  description: "",
+  image: null,
+}));
 
 const onChangeInput = (data, name) => {
   info.value[name] = data;
@@ -45,18 +43,24 @@ const inputs = [
   },
   {
     id: 4,
+    title: "Price *",
+    name: "Price",
+    placeholder: "$4000",
+  },
+  {
+    id: 5,
     title: "City *",
     name: "city",
     placeholder: "Austin",
   },
   {
-    id: 5,
+    id: 6,
     title: "Number of Seats *",
     name: "seats",
     placeholder: "5",
   },
   {
-    id: 6,
+    id: 7,
     title: "Features *",
     name: "features",
     placeholder: "Leather Interior, No Accidents",
