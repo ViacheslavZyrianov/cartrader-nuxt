@@ -1,14 +1,22 @@
-import cars from '@/data/cars.json';
+import { PrismaClient } from '@/generated/prisma';
+
+const prisma = new PrismaClient();
 
 export default defineEventHandler((event) => {
-    const car = cars.find(car => car.id === Number(event.context.params?.id)) || null;
+    const { id } = event.context.params;
+
+    const car = prisma.car.findUnique({
+        where: {
+            id: Number(id),
+        }
+    });
 
     if (!car) {
         throw createError({
             statusCode: 404,
-            statusMessage: `Car with id ${event.context.params?.id} not found`,
+            statusMessage: 'Car not found',
         });
     }
 
-    return car
+    return car;
 })
