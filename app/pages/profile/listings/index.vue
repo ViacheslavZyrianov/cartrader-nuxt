@@ -4,11 +4,13 @@ definePageMeta({
 });
 
 const user = useSupabaseUser()
+const supabase = useSupabaseClient()
 
 const { data: listings, refresh } = await useFetch(`/api/car/listings/user/${user.value?.id}`);
 
-const onDeleteListing = async (id: string) => {
-  await $fetch(`/api/car/listings/${id}`, {
+const onDeleteListing = async (listing: unknown) => {
+  await supabase.storage.from('images').remove([listing.image])
+  await $fetch(`/api/car/listings/${listing.id}`, {
     method: 'DELETE',
   });
 
@@ -42,7 +44,7 @@ const onDeleteListing = async (id: string) => {
         v-for="listing in listings"
         :key="listing.id"
         :listing="listing"
-        @delete="onDeleteListing"
+        @delete="onDeleteListing(listing)"
       />
     </div>
   </div>
