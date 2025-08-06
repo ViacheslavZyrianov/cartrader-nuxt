@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import { v4 as uuidv4 } from 'uuid';
+
 definePageMeta({
   layout: "custom",
 });
 
 const { makes } = useCars();
 const user = useSupabaseUser()
+const supabase = useSupabaseClient()
 
 const info = useState("adInfo", () => ({
   make: "",
@@ -79,6 +82,20 @@ const buttonSubmitClassList = computed(() => ({
 }));
 
 const onFormSubmit = async () => {
+  const filename = uuidv4();
+
+  const { data, error } = await supabase.storage
+    .from('images')
+    .upload(`public/${filename}`, info.value.image, {
+      cacheControl: '3600',
+      upsert: true,
+    });
+
+  if (error) {
+    errorMessage.value = error.message;
+    return;
+  }
+
   const body = {
     ...info.value,
     name: `${info.value.make} ${info.value.model}`,
@@ -89,7 +106,7 @@ const onFormSubmit = async () => {
     year: parseInt(info.value.year, 10),
     price: parseInt(info.value.price, 10),
     miles: parseInt(info.value.miles, 10),
-    image: info.value.image ? info.value.image.name : null,
+    image: data?.path,
     listerId: user.value.id
   };
 
@@ -104,6 +121,7 @@ const onFormSubmit = async () => {
     navigateTo('/profile/listings');
   } catch (error) {
     errorMessage.value = error.statusMessage;
+    await supabase.storage.from('images').remove([`public/${filename}`]);
   }
 }
 </script>
