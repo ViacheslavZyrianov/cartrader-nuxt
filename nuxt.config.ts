@@ -5,5 +5,10 @@ export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxtjs/tailwindcss', '@nuxt/image', '@vueuse/nuxt', '@nuxtjs/supabase'],
   supabase: {
     redirect: false,
+  },
+  runtimeConfig: {
+    public: {
+      domain: 'http://localhost:3000',
+    }
   }
 })
