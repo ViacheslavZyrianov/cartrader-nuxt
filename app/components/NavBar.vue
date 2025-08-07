@@ -20,7 +20,10 @@ const onLogout = async () => {
       <NuxtLink to="/profile/listings" class="mr-5">Profile</NuxtLink>
       <p class="cursor-pointer" @click="onLogout">Logout</p>
     </div>
-    <NuxtLink v-else to="/login">Login</NuxtLink>
+    <div v-else class="flex gap-x-4">
+      <NuxtLink to="/login">Login</NuxtLink>
+      <NuxtLink to="/registration">Registration</NuxtLink>
+    </div>
   </header>
 </template>
 
