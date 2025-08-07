@@ -20,8 +20,8 @@ const onSubmit = async () => {
 </script>
 
 <template>
-  <div>
-    <h1 class="text-6xl my-8 font-semibold">Registration</h1>
+  <div class="mt-10">
+    <h1 class="text-5xl font-bold mb-7">Registration</h1>
     <form @submit.prevent="onSubmit">
       <label for="email">Email</label>
       <input id="email" v-model="form.email" type="email" name="email" placeholder="Enter your email" class="border p-2 mb-4 w-full">
